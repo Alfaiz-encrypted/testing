@@ -1,22 +1,56 @@
-// pages/api/register.ts
-import { NextApiRequest, NextApiResponse } from 'next';
+import Link from 'next/link';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    try {
-      // Extract data from the request body
-      const { username, email, password } = req.body;
+const Navbar = () => {
+    return (
+        <nav className="navbar">
+            <ul className="nav-list">
+                <li className="nav-item">
+                    <Link href="/blog/blog1">
+                        bloag1
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link href="/blog/blog2">
+                        bloag2
+                    </Link>
+                </li>
+                {/* <li className="nav-item">
+                    <Link href="/contact">
+                        Contact
+                    </Link>
+                </li> */}
+                {/* Add more links as needed */}
+            </ul>
 
-      console.log('Registration data:', { username, email, password });
+            {/* Add additional styling or components here */}
+            <style jsx>{`
+        .navbar {
+          background-color: rgb(33, 10, 48);
+          padding: 10px;
+        }
 
-      // Respond with a success message or relevant data
-      res.status(200).json({ success: true, message: 'Registration successful' });
-    } catch (error) {
-      console.error('Registration error:', error);
-      res.status(500).json({ success: false, message: 'Internal server error' });
-    }
-  } else {
-    // Handle other HTTP methods
-    res.status(405).json({ success: false, message: 'Method Not Allowed' });
-  }
-}
+        .nav-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          color:white;
+        }
+
+        .nav-item {
+          margin-right: 15px;
+          color:white
+        }
+
+        .nav-link {
+          text-decoration: none;
+          color: white;
+          font-weight: bold;
+          font-size: 16px;
+        }
+      `}</style>
+        </nav>
+    );
+};
+
+export default Navbar;
